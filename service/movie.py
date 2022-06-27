@@ -1,4 +1,4 @@
-from ..dao.movie import MovieDAO
+from dao.movie import MovieDAO
 
 
 class MovieService:
@@ -12,8 +12,8 @@ class MovieService:
         return self.dao.create(data)
 
 
-    def update_movie_full(self, data):
-        movie = self.get_movies(data['movie_id'])
+    def update_movie_full(self, movie_id, data):
+        movie = self.get_movies(movie_id)
 
         movie.title = data['title']
         movie.description = data['description']

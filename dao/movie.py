@@ -1,4 +1,4 @@
-from .model.movies import Movie
+from dao.model.movies import Movie
 
 
 class MovieDAO:
@@ -29,6 +29,8 @@ class MovieDAO:
 
     def delete(self, mid):
         movie = self.get(mid)
+        if not movie:
+            return
 
         self.session.delete(movie)
         self.session.commit()
