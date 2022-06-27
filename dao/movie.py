@@ -18,9 +18,9 @@ class MovieDAO:
                 query = query.filter(eval(f"Movie.{key}")==int(value))
 
         if mid:
-            return self.session.query(Movie).get(mid)
+            return query.get(mid)
         else:
-            return self.session.query(Movie).all()
+            return query.all()
 
 
     def create(self, data):
@@ -30,8 +30,7 @@ class MovieDAO:
         return new_movie
 
 
-    def update(self, mid):
-        movie = self.get(mid)
+    def update(self, movie):
         self.session.add(movie)
         self.session.commit()
 
