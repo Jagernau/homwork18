@@ -11,8 +11,9 @@ movie_ns = Namespace('movies')
 class MoviesView(Resource):
 
     def get(self):
-        movies = MovieSchema(many=True).dump(movie_service.get_movies())
-        return movies, 200
+        schema = MovieSchema(many=True)
+
+        return schema.dump(movie_service.get_movies(**request.args)), 200
 
     def post(self):
         new_movie = movie_service.create_movie(request.json)

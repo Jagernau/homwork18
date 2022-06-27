@@ -1,3 +1,6 @@
+from dao.model.directors import Director
+from dao.model.genres import Genre
+
 from dao.model.movies import Movie
 
 
@@ -7,7 +10,13 @@ class MovieDAO:
         self.session = session
 
 
-    def get(self, mid=None):
+    def get(self, mid=None, **kwargs):
+
+        query = self.session.query(Movie)
+        if kwargs:
+            for key, value in kwargs.items():
+                query = query.filter(eval(f"Movie.{key}")==int(value))
+
         if mid:
             return self.session.query(Movie).get(mid)
         else:

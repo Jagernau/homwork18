@@ -5,8 +5,8 @@ class MovieService:
     def __init__(self, dao: MovieDAO):
         self.dao = dao
     
-    def get_movies(self, mid=None):
-        return self.dao.get(mid)
+    def get_movies(self, mid=None, **kwargs):
+        return self.dao.get(mid, **kwargs)
 
     def create_movie(self, data):
         return self.dao.create(data)
@@ -50,6 +50,8 @@ class MovieService:
     def delete(self, movie_id):
         self.dao.delete(movie_id)
 
+    
+                
 
 
 
