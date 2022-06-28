@@ -15,7 +15,7 @@ class GenresView(Resource):
 
 
 
-@genre_ns.route('/<init:gid>')
+@genre_ns.route('/<int:gid>')
 class GenreView(Resource):
     schema = GenreSchema()
 
