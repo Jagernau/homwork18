@@ -1,5 +1,6 @@
 from flask import make_response, request
 from flask_restx import Resource, Namespace
+
 from implemented import movie_service
 from dao.model.movies import MovieSchema
 
@@ -14,6 +15,7 @@ class MoviesView(Resource):
         schema = MovieSchema(many=True)
 
         return schema.dump(movie_service.get_movies(**request.args)), 200
+
 
     def post(self):
         new_movie = movie_service.create_movie(request.json)
