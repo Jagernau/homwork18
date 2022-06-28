@@ -19,8 +19,8 @@ class MovieDAO:
 
         if mid:
             return query.get(mid)
-        else:
-            return query.all()
+        
+        return query.all()
 
 
     def create(self, data):
